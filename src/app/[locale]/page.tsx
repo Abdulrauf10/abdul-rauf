@@ -2,6 +2,9 @@
 import Navbar from "@/components/Navbar"
 import Image from "next/image"
 import { useTranslations } from "next-intl"
+import { FaLinkedin } from "react-icons/fa6"
+import { MdEmail } from "react-icons/md"
+import { FaSquarePhone } from "react-icons/fa6"
 
 export default function Home() {
   const t = useTranslations("Intro")
@@ -34,7 +37,33 @@ export default function Home() {
               {t("introduction-2")}
             </p>
             <br />
-            <p>{t("introduction-3")}</p>
+            <p className="text-[#5289B1]">{t("introduction-3")}</p>
+
+            <div className="flex  bg-[#F2892A] p-[5px] w-fit rounded-md gap-[10px] mt-[15px]">
+              <a
+                href="https://api.whatsapp.com/send?phone=6285236375312"
+                target="_blank"
+                className="text-white text-[30px]"
+              >
+                <FaSquarePhone />
+              </a>
+
+              <a
+                href="mailto:abd.rauf.lamada@gmail.com"
+                target="_blank"
+                className="text-white text-[30px]"
+              >
+                <MdEmail />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/muhammad-abdul-rauf"
+                target="_blank"
+                className="text-white text-[30px]"
+              >
+                <FaLinkedin />
+              </a>
+            </div>
           </div>
         </div>
 
@@ -43,7 +72,7 @@ export default function Home() {
           className="mt-[50px] w-[100vw] bg-[#279D9E] flex flex-col items-center"
         >
           <h2 className="text-[37px] text-center text-[white] font-bold mb-[30px]">
-            Fun Projects
+            {t("fun-project")}
           </h2>
           <div className="flex flex-col lg:flex-row gap-[20px] justify-center items-center mb-[20px]">
             <div className=" shadow-lg w-[300px] p-[15px] flex flex-col items-center bg-[white] mb-[20px] rounded-lg">
@@ -56,7 +85,7 @@ export default function Home() {
               />
 
               <p className="mt-[20px] text-[black] text-center">
-                Gulugulu Flight - Web App to find flight schedules
+                {t("gulugulu")}
                 <br />
                 Technologies: React Js, Material UI, Tailwind
               </p>
@@ -89,8 +118,7 @@ export default function Home() {
               />
 
               <p className="mt-[20px] text-[black] text-center">
-                Object Detection - Web App that can detect multiple objects
-                using local camera right in the browser
+                {t("object-detection")}
                 <br />
                 Technologies: React Js, Tensorflow
               </p>
@@ -123,8 +151,7 @@ export default function Home() {
               />
 
               <p className="mt-[20px] text-[black] text-center">
-                Work Wave - Web App to find list of jobs and help user to apply
-                directly to the compnay&apos;s website
+                {t("workwave")}
                 <br />
                 Technologies: Next Js, Chakra UI
               </p>
@@ -154,22 +181,22 @@ export default function Home() {
           className="pt-[50px] w-[100vw] bg-[#E6EDF3] flex flex-col items-center"
         >
           <h2 className="text-[47px] text-center text-[#5289B1] font-bold mb-[30px]">
-            Professional Projects
+            {t("professional-project")}
           </h2>
           <div className="flex flex-col lg:flex-row gap-[20px] justify-center items-center mb-[20px]">
-            <div className=" shadow-lg w-[200px] p-[15px] flex flex-col items-center bg-[white] mb-[20px] rounded-lg">
+            <div className="mb-[20px] shadow-lg w-[200px] p-[15px] flex flex-col items-center bg-[white] rounded-lg">
               <Image
-                src={"/homage.png"}
-                alt="homage"
-                width={100}
-                height={100}
+                src={"/surge.svg"}
+                alt="surge"
+                width={50}
+                height={50}
                 className="bg-[white] rounded-md"
               />
 
               <p className="mt-[20px] text-[black] text-center">
-                Web App for hospital management system
+                {t("surge")}
                 <br />
-                Technologies: Next Js, Chakra UI, Zustand
+                Technologies: Vue Js, Vuetify, Vuex
               </p>
             </div>
 
@@ -183,7 +210,7 @@ export default function Home() {
               />
 
               <p className="mt-[20px] text-[black] text-center">
-                SaaS productivity management system
+                {t("teamtrics")}
                 <br />
                 Technologies: Next Js, Chakra UI, Zustand
               </p>
@@ -199,7 +226,7 @@ export default function Home() {
               />
 
               <p className="mt-[20px] text-[black] text-center">
-                Merchant for selling vegetables and fruits
+                {t("merchant")}
                 <br />
                 Technologies: Next Js, Chakra UI, Zustand
               </p>
@@ -217,7 +244,7 @@ export default function Home() {
               />
 
               <p className="mt-[20px] text-[black] text-center">
-                Ecommers for planning and selling dog&apos;s diet
+                {t("ocelle")}
                 <br />
                 Technologies: Next Js, Tailwind
               </p>
@@ -233,25 +260,25 @@ export default function Home() {
               />
 
               <p className="mt-[20px] text-[black] text-center">
-                Web App to identify rice quality with AI
+                {t("true-rice")}
                 <br />
                 Technologies: Nuxt Js, Tailwind, Vuetify, Vuex
               </p>
             </div>
 
-            <div className="mb-[20px] shadow-lg w-[200px] p-[15px] flex flex-col items-center bg-[white] rounded-lg">
+            <div className=" shadow-lg w-[200px] p-[15px] flex flex-col items-center bg-[white] mb-[20px] rounded-lg">
               <Image
-                src={"/surge.svg"}
-                alt="surge"
-                width={50}
-                height={50}
+                src={"/homage.png"}
+                alt="homage"
+                width={70}
+                height={70}
                 className="bg-[white] rounded-md"
               />
 
               <p className="mt-[20px] text-[black] text-center">
-                Web App to generate lessons for teachers
+                {t("homage")}
                 <br />
-                Technologies: Vue Js, Tailwind, Vuetify, Vuex
+                Technologies: Next Js, Chakra UI, Zustand
               </p>
             </div>
           </div>
@@ -259,8 +286,38 @@ export default function Home() {
 
         <div
           id="contact"
-          className="w-full flex pt-[30px] bg-[#5289B1] h-[350px] "
-        ></div>
+          className="w-full flex bg-[#5289B1] h-[200px] flex-col items-center justify-center "
+        >
+          <p className="text-white text-[30px] lg:text-[54px] font-extrabold">
+            {t("contact")}
+          </p>
+
+          <div className="flex w-fit rounded-md gap-[20px] mt-[15px]">
+            <a
+              href="https://api.whatsapp.com/send?phone=6285236375312"
+              target="_blank"
+              className="text-white text-[30px]"
+            >
+              <FaSquarePhone />
+            </a>
+
+            <a
+              href="mailto:abd.rauf.lamada@gmail.com"
+              target="_blank"
+              className="text-white text-[30px]"
+            >
+              <MdEmail />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/muhammad-abdul-rauf"
+              target="_blank"
+              className="text-white text-[30px]"
+            >
+              <FaLinkedin />
+            </a>
+          </div>
+        </div>
       </div>
     </>
   )
