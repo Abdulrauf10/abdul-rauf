@@ -74,7 +74,7 @@ export default function Home() {
           <h2 className="text-[37px] text-center text-[white] font-bold mb-[30px]">
             {t("fun-project")}
           </h2>
-          <div className="flex flex-col lg:flex-row gap-[20px] justify-center items-center mb-[20px]">
+          <div className="flex flex-col lg:flex-row gap-[20px] mb-[20px]">
             <div className=" shadow-lg w-[300px] p-[15px] flex flex-col items-center bg-[white] mb-[20px] rounded-lg">
               <Image
                 src={"/gulugulu.png"}
@@ -183,7 +183,7 @@ export default function Home() {
           <h2 className="text-[47px] text-center text-[#5289B1] font-bold mb-[30px]">
             {t("professional-project")}
           </h2>
-          <div className="flex flex-col lg:flex-row gap-[20px] justify-center items-center mb-[20px]">
+          <div className="flex flex-col lg:flex-row gap-[20px]  mb-[20px]">
             <div className="mb-[20px] shadow-lg w-[200px] p-[15px] flex flex-col items-center bg-[white] rounded-lg">
               <Image
                 src={"/surge.svg"}
@@ -233,7 +233,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-[20px] justify-center items-center mb-[20px]">
+          <div className="flex flex-col lg:flex-row gap-[20px] mb-[20px]">
             <div className=" shadow-lg w-[200px] p-[15px] flex flex-col items-center bg-[white] mb-[20px] rounded-lg">
               <Image
                 src={"/ocelle.png"}
