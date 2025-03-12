@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl"
 import { FaLinkedin } from "react-icons/fa6"
 import { MdEmail } from "react-icons/md"
 import { FaSquarePhone } from "react-icons/fa6"
+import { FaGithub } from "react-icons/fa"
 
 export default function Home() {
   const t = useTranslations("Intro")
@@ -40,6 +41,13 @@ export default function Home() {
             <p className="text-[#5289B1]">{t("introduction-3")}</p>
 
             <div className="flex  bg-[#F2892A] p-[5px] w-fit rounded-md gap-[10px] mt-[15px]">
+              <a
+                href="https://github.com/Abdulrauf10"
+                target="_blank"
+                className="text-white text-[30px]"
+              >
+                <FaGithub />
+              </a>
               <a
                 href="https://api.whatsapp.com/send?phone=6285236375312"
                 target="_blank"
