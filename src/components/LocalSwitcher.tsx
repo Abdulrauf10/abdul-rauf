@@ -18,13 +18,13 @@ export default function LocaleSwitcher() {
 
   return (
     <div className="relative inline-block">
-      <label className="flex items-center space-x-2 border rounded-md px-4 py-2 bg-gray-50 text-gray-700 hover:shadow focus-within:ring-2 focus-within:ring-blue-500">
+      <label className="flex items-center space-x-2 border rounded-md px-4 py-2 bg-black text-white hover:shadow focus-within:ring-2 focus-within:ring-blue-500">
         <span className="sr-only">Change language</span>
         <select
           defaultValue={localeActive}
           onChange={onSelectChange}
           disabled={isPending}
-          className="bg-transparent outline-none text-gray-900 py-1"
+          className="bg-transparent outline-none text-white py-1"
         >
           <option value="en">English 🇺🇸</option>
           <option value="ar">العربية 🇸🇦</option>
