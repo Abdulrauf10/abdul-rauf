@@ -72,13 +72,10 @@ export default function SplashCursor({
 
   useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas) return // Guard canvas early
+    if (!canvas) return
 
-    // Pointer and config setup
     const pointers: Pointer[] = [pointerPrototype()]
 
-    // All these are guaranteed numbers due to destructuring defaults
-    // So we cast them to remove TS warnings:
     const config = {
       SIM_RESOLUTION: SIM_RESOLUTION!,
       DYE_RESOLUTION: DYE_RESOLUTION!,
@@ -1513,7 +1510,6 @@ export default function SplashCursor({
         updatePointerUpData(pointer)
       }
     })
-    // ------------------------------------------------------------
   }, [
     SIM_RESOLUTION,
     DYE_RESOLUTION,
