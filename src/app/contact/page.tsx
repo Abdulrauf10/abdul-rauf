@@ -1,6 +1,6 @@
 "use client"
 import React from "react"
-import { motion } from "motion/react"
+import { motion } from "framer-motion"
 import IconTooltip from "@/components/IconTooltip"
 import { MdEmail } from "react-icons/md"
 import { IoLogoLinkedin, IoLogoWhatsapp } from "react-icons/io"

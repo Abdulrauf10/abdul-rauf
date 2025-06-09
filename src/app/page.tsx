@@ -1,7 +1,7 @@
 "use client"
 
 import ProgressSidebar from "@/components/ProgressSidebar"
-import { motion, useScroll } from "motion/react"
+import { motion, useScroll } from "framer-motion"
 import Image from "next/image"
 import React, { useRef } from "react"
 import { FaReact, FaVuejs, FaNodeJs, FaWordpress } from "react-icons/fa"

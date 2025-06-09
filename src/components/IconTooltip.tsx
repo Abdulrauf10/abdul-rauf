@@ -1,4 +1,3 @@
-// components/IconTooltip.tsx
 "use client"
 
 import { ReactNode } from "react"
