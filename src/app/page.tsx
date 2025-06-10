@@ -14,6 +14,7 @@ import {
   SiNestjs
 } from "react-icons/si"
 import IconTooltip from "@/components/IconTooltip"
+import SplashCursor from "@/components/SplashCursor"
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -28,6 +29,7 @@ export default function Home() {
         className="snap-y snap-mandatory h-screen overflow-y-scroll scroll-smooth scrollbar-hide"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
+        <SplashCursor />
         <Section
           id="introduction"
           className={`snap-start h-screen flex items-center justify-center w-full`}

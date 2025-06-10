@@ -11,9 +11,9 @@ type IconTooltipProps = {
 export default function IconTooltip({ icon, label, url }: IconTooltipProps) {
   return (
     <div className="relative group">
-      <div className="text-white p-4 rounded-full bg-gray-800 flex items-center justify-center w-20 h-20 transition-transform duration-300 transform group-hover:scale-110 group-hover:shadow-lg">
+      <div className="text-white p-2 rounded-full bg-gray-800 flex items-center justify-center min-w-4 min-h-4 transition-transform duration-300 transform group-hover:scale-110 group-hover:shadow-lg">
         <div className="transition-transform duration-300 transform group-hover:scale-110">
-          <a href={`${url ? url : "#"}`} target="_blank">
+          <a href={`${url ? url : "#"}`} target={url ? "_blank" : "_self"}>
             {icon}
           </a>
         </div>
