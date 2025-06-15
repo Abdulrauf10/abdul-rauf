@@ -1,86 +1,162 @@
 "use client"
 
-import React, { useState } from "react"
-import { usePathname } from "next/navigation"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { FaBars, FaTimes } from "react-icons/fa"
-
-const navLinks = [
-  { name: "ABOUT ME", href: "/" },
-  { name: "PORTFOLIO", href: "/portfolio" },
-  { name: "CONTACT", href: "/contact" }
-]
 
 export default function Navbar() {
-  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
 
-  const toggleMenu = () => setIsOpen(!isOpen)
+  // Close on ESC key
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false)
+    }
+    window.addEventListener("keydown", handleEsc)
+    return () => window.removeEventListener("keydown", handleEsc)
+  }, [])
+
+  const menuLinks = [
+    { label: "Portfolio", path: "/portfolio" },
+    { label: "Contact", path: "/contact" }
+  ]
 
   return (
-    <header className="fixed top-0 lg:mt-[30px] left-0 w-full z-50">
-      <nav className=" lg:max-w-4xl mx-auto px-4 sm:px-8 md:px-12 lg:px-16 bg-black/65 text-white shadow-md lg:rounded-3xl">
-        {/* Desktop */}
-        <div className="hidden md:flex items-center justify-center py-2">
-          <div className="flex items-center">
-            <ul className="flex space-x-32">
-              {navLinks.map((link) => (
-                <motion.li
-                  key={link.href}
-                  whileHover={{ scale: 1.05 }}
-                  className={`relative px-4 py-2 rounded-2xl ${
-                    pathname === link.href
-                      ? "text-black bg-white"
-                      : "text-white"
-                  }`}
-                >
-                  <Link href={link.href}>{link.name}</Link>
-                </motion.li>
-              ))}
-            </ul>
+    <>
+      {/* Top Bar */}
+      {!isOpen && (
+        <div className="menu-bar fixed top-0 left-0 w-full p-6 flex justify-between items-center z-[999] bg-black/45 text-white">
+          <div className="menu-logo">
+            <Link href="/" className="text-xl font-bold cursor-pointer">
+              About Me
+            </Link>
           </div>
-        </div>
-
-        {/* Mobile */}
-        <div className="md:hidden flex items-center py-4">
           <button
-            onClick={toggleMenu}
-            className="text-white focus:outline-none"
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-white cursor-pointer"
           >
-            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            Menu
           </button>
         </div>
+      )}
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.ul
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden  text-white backdrop-blur-md rounded-b-lg px-6 py-4 space-y-4 h-screen w-full flex flex-col items-center"
+      {/* Backdrop - Only visible when menu is open */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop click to close */}
+            <motion.div
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-30"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+            />
+
+            {/* Overlay Menu */}
+            <motion.div
+              className="menu-overlay fixed top-0 left-0 w-full h-screen bg-white p-6 z-40 flex flex-col justify-between overflow-y-auto text-black"
+              initial={{ clipPath: "inset(0% 0% 100% 0%)" }}
+              animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
+              exit={{ clipPath: "inset(0% 0% 100% 0%)" }}
+              transition={{ duration: 1.2, ease: [0.43, 0.13, 0.23, 0.96] }}
+              onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
             >
-              {navLinks.map((link) => (
-                <motion.li
-                  key={link.href}
-                  whileTap={{ scale: 0.95 }}
-                  className={`block px-4 py-1 rounded-3xl transition-all duration-300 ${
-                    pathname === link.href
-                      ? "bg-white text-black"
-                      : "text-white"
-                  }`}
+              {/* Header */}
+              {isOpen && (
+                <div className="flex justify-between items-start w-full">
+                  <div className="menu-logo">
+                    <Link href={"/"} className="text-2xl font-bold">
+                      Abdul Rauf
+                    </Link>
+                  </div>
+                  <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="text-2xl cursor-pointer"
+                  >
+                    &times;
+                  </button>
+                </div>
+              )}
+
+              {/* Main Links */}
+              <motion.div
+                initial={{ y: 75 }}
+                animate={{ y: 0 }}
+                transition={{ staggerChildren: 0.1, delayChildren: 0.4 }}
+                className="flex-1 flex flex-col justify-center px-4"
+              >
+                <nav className="menu-links flex flex-col gap-8 text-3xl sm:text-4xl font-semibold">
+                  {menuLinks.map((data, idx) => (
+                    <motion.div
+                      key={idx}
+                      className="menu-link-item"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <motion.div
+                        className="menu-link-item-holder"
+                        initial={{ y: 75 }}
+                        animate={{ y: 0 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                      >
+                        <Link
+                          href={data.path}
+                          className="menu-link"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {data.label}
+                        </Link>
+                      </motion.div>
+                    </motion.div>
+                  ))}
+                </nav>
+
+                {/* Info Section */}
+                <motion.div
+                  className="menu-info flex flex-col sm:flex-row justify-between mt-12 gap-6 sm:gap-0 text-base sm:text-lg"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8, staggerChildren: 0.1 }}
                 >
-                  <Link href={link.href} onClick={() => setIsOpen(false)}>
-                    {link.name}
-                  </Link>
-                </motion.li>
-              ))}
-            </motion.ul>
-          )}
-        </AnimatePresence>
-      </nav>
-    </header>
+                  <motion.div className="menu-info-col flex flex-col gap-2">
+                    <a
+                      href="https://www.linkedin.com/in/muhammad-abdul-rauf/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      LinkedIn ↗
+                    </a>
+                    <a
+                      href="https://github.com/Abdulrauf10"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      GitHub ↗
+                    </a>
+                  </motion.div>
+                  <motion.div className="menu-info-col flex flex-col gap-2">
+                    <p>abd.rauf.lamada@gmail.com</p>
+                    <p>+62 852-3637-5312</p>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+
+              {/* Footer */}
+              <motion.div
+                className="menu-preview pb-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+              >
+                <button className="underline text-sm sm:text-base">
+                  View Showreel
+                </button>
+              </motion.div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
