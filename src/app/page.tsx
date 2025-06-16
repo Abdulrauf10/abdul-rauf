@@ -1,9 +1,8 @@
 "use client"
 
-import ProgressSidebar from "@/components/ProgressSidebar"
-import { motion, useScroll } from "framer-motion"
+import { motion } from "framer-motion"
 import Image from "next/image"
-import React, { useRef } from "react"
+import React from "react"
 import { FaReact, FaVuejs, FaNodeJs, FaWordpress } from "react-icons/fa"
 import {
   SiNextdotjs,
@@ -13,168 +12,151 @@ import {
   SiMongodb,
   SiNestjs
 } from "react-icons/si"
-import IconTooltip from "@/components/IconTooltip"
-import SplashCursor from "@/components/SplashCursor"
+import IconTooltip from "@/components/IconTooltip" // Your original tooltip
 
 export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    container: containerRef
-  })
-
   return (
-    <>
-      <div
-        ref={containerRef}
-        className="snap-y snap-mandatory h-screen overflow-y-scroll scroll-smooth scrollbar-hide"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-      >
-        <SplashCursor />
-        <Section
-          id="introduction"
-          className={`snap-start h-screen flex items-center justify-center w-full`}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      className="bg-white w-screen text-gray-800 flex flex-col justify-center items-center pt-[50px] pb-[100px]"
+    >
+      <div className="lg:max-w-[50%] w-[80%]">
+        {/* Hero Section */}
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="bg-white text-gray-800"
         >
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="h-screen w-full bg-cover bg-center bg-black/30"
-            style={{ backgroundImage: "url('/home/home.png')" }}
-          >
-            <div className="flex flex-col items-center justify-center bg-black/65 p-5 w-full h-full">
+          {/* Hero Section */}
+          <div className="max-w-6xl mx-auto w-full px-6 py-24">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col items-center md:items-start gap-6"
+            >
               <Image
                 src="/home/me.jpg"
                 alt="Muhammad Abdul Rauf"
-                width={200}
-                height={200}
-                className=" rounded-xl mb-2"
+                width={150}
+                height={150}
+                className="rounded-full shadow-md"
               />
-              <motion.h1
-                initial={{ y: 20 }}
-                whileInView={{ y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-white text-xl lg:text-3xl font-bold text-center px-4"
-              >
-                👋 Hi, I&apos;m Rauf
-              </motion.h1>
-              <motion.p
-                initial={{ y: 20 }}
-                whileInView={{ y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-white text-[15px] max-w-[50rem] md:max-w-[30rem] lg:text-[20px] font-bold text-center px-4"
-              >
-                I build reliable, scalable, and user-focused web applications —
-                fast. With 3+ years of full-stack experience, I turn complex
-                ideas into clean, maintainable code that teams can trust and
-                users love.
-              </motion.p>
-            </div>
-          </motion.div>
-        </Section>
+              <div className="text-center md:text-left">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                  👋 Hi, I&apos;m Rauf
+                </h1>
+                <p className="text-lg md:text-xl max-w-xl mt-4 leading-relaxed">
+                  I build reliable, scalable, and user-focused web applications
+                  — fast. With 3+ years of full-stack experience, I turn complex
+                  ideas into clean, maintainable code that teams can trust and
+                  users love.
+                </p>
+              </div>
+            </motion.div>
 
-        <Section
-          id="tech"
-          className={`snap-start h-screen flex items-center justify-center w-full`}
-        >
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="h-screen w-full bg-cover bg-center bg-black/30"
-            style={{ backgroundImage: "url('/home/technology.png')" }}
-          >
-            <div className="h-screen w-full flex items-center justify-center bg-black/40">
-              <motion.div
-                initial={{ y: 20 }}
-                whileInView={{ y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 text-white text-4xl md:text-6xl font-bold text-center px-4"
+            <div className="flex gap-6 mt-8 w-full">
+              {/* Hire me Button */}
+              <a
+                href="mailto:abd.rauf.lamada@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-black text-white px-6 py-3  rounded-full font-semibold hover:bg-gray-800 transition-all"
               >
-                <IconTooltip icon={<FaReact />} label="React JS" />
-                <IconTooltip icon={<SiNextdotjs />} label="Next.js" />
-                <IconTooltip icon={<FaVuejs />} label="Vue.js" />
-                <IconTooltip icon={<SiNuxtdotjs />} label="Nuxt.js" />
-                <IconTooltip icon={<FaNodeJs />} label="Node.js" />
-                <IconTooltip icon={<SiExpress />} label="Express" />
-                <IconTooltip icon={<SiPostgresql />} label="PostgreSQL" />
-                <IconTooltip icon={<SiMongodb />} label="MongoDB" />
-                <IconTooltip icon={<SiNestjs />} label="Nest.js" />
-                <IconTooltip icon={<FaWordpress />} label="Wordpress" />
-              </motion.div>
-            </div>
-          </motion.div>
-        </Section>
+                Hire me
+              </a>
 
-        <Section
-          id="offer"
-          className={`snap-start h-screen flex items-center justify-center w-full`}
-        >
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="h-screen w-full bg-cover bg-center bg-black/30"
-            style={{ backgroundImage: "url('/home/offer.png')" }}
-          >
-            <div className="h-full flex flex-col items-center justify-center bg-black/60">
-              <motion.h1
-                initial={{ y: 20 }}
-                whileInView={{ y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-white text-[15px] md:text-[20px] lg:text-[30px] lg:max-w-[55rem] md:max-w-[30rem] font-bold text-center px-4"
-              >
-                If you’re looking for an engineer who can own problems, move
-                fast, and consistently deliver — I’m ready.
-              </motion.h1>
-              <motion.p
-                initial={{ y: 20 }}
-                whileInView={{ y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-white text-[15px] md:text-[15px] lg:text-[20px] lg:max-w-[55rem] md:max-w-[30rem] font-bold text-center px-4"
-              >
-                Proven ability to take features from idea to deployment
-              </motion.p>
-              <motion.p
-                initial={{ y: 20 }}
-                whileInView={{ y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-white text-[15px] md:text-[15px] lg:text-[20px] lg:max-w-[55rem] md:max-w-[30rem] font-bold text-center px-4"
-              >
-                Strong communication, fast ramp-up, and team-first mindset
-              </motion.p>
-              <motion.p
-                initial={{ y: 20 }}
-                whileInView={{ y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-white text-[15px] md:text-[15px] lg:text-[20px] lg:max-w-[55rem] md:max-w-[30rem] font-bold text-center px-4"
-              >
-                Comfortable across modern stacks — from React and TypeScript to
-                Node.js and SQL
-              </motion.p>
+              {/* Open to Opportunities Button */}
+              <p className="bg-green-100 text-green-700 px-6 py-3 rounded-full font-semibold hover:bg-green-200 hover:scale-105 transform transition-all w-fit">
+                <span className="mr-2">•</span>
+                <span className="hidden sm:inline">Open to Opportunities</span>
+                <span className="inline sm:hidden">Available</span>
+              </p>
             </div>
-          </motion.div>
-        </Section>
+          </div>
+        </motion.div>
+
+        {/* Technologies Section */}
+
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-10 text-center md:text-left mt-[20px]"
+        >
+          Technologies I Work With
+        </motion.h2>
+
+        <motion.div
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-wrap gap-10 text-4xl justify-center lg:justify-start"
+        >
+          <IconTooltip icon={<FaReact />} label="React JS" bgColor="#060110" />
+          <IconTooltip
+            icon={<SiNextdotjs />}
+            label="Next.js"
+            bgColor="#060110"
+          />
+          <IconTooltip icon={<FaVuejs />} label="Vue.js" bgColor="#3FB27F" />
+          <IconTooltip
+            icon={<SiNuxtdotjs />}
+            label="Nuxt.js"
+            bgColor="#2F445A"
+          />
+          <IconTooltip icon={<FaNodeJs />} label="Node.js" bgColor="#519942" />
+          <IconTooltip icon={<SiExpress />} label="Express" />
+          <IconTooltip
+            icon={<SiPostgresql />}
+            label="PostgreSQL"
+            bgColor="#2F5E8E"
+          />
+          <IconTooltip icon={<SiMongodb />} label="MongoDB" bgColor="#4CA53F" />
+          <IconTooltip icon={<SiNestjs />} label="Nest.js" bgColor="#DA224B" />
+          <IconTooltip
+            icon={<FaWordpress />}
+            label="Wordpress"
+            bgColor="#046F95"
+          />
+        </motion.div>
+
+        {/* Offer Section */}
+
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-2xl md:text-3xl lg:text-4xl text-center lg:text-left md:text-left font-semibold mb-8 mt-[70px]"
+        >
+          If you’re looking for an engineer who can own problems, move fast, and
+          consistently deliver — I’m ready.
+        </motion.h2>
+        <motion.ul
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="space-y-4 text-lg text-gray-700 text-center lg:text-left md:text-left"
+        >
+          <li className="flex items-start">
+            <span className="mr-2 mt-1 text-blue-500">✔</span>
+            Proven ability to take features from idea to deployment
+          </li>
+          <li className="flex items-start">
+            <span className="mr-2 mt-1 text-blue-500">✔</span>
+            Strong communication, fast ramp-up, and team-first mindset
+          </li>
+          <li className="flex items-start">
+            <span className="mr-2 mt-1 text-blue-500">✔</span>
+            Comfortable across modern stacks — from React and TypeScript to
+            Node.js and SQL
+          </li>
+        </motion.ul>
       </div>
-
-      <ProgressSidebar scrollYProgress={scrollYProgress} />
-    </>
-  )
-}
-
-function Section({
-  id,
-  children,
-  style,
-  className
-}: {
-  id: string
-  children?: React.ReactNode
-  style?: any
-  className?: any
-}) {
-  return (
-    <section style={style} id={id} className={className}>
-      {children}
-    </section>
+    </motion.div>
   )
 }

@@ -6,7 +6,7 @@ import { FaVuejs } from "react-icons/fa"
 import { RiTailwindCssLine } from "react-icons/ri"
 import ProjectCard from "@/components/ProjectCard"
 
-const portfolio = () => {
+const Portfolio = () => {
   const projects = [
     {
       id: 1,
@@ -63,33 +63,35 @@ const portfolio = () => {
         return <SiNextdotjs />
     }
   }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      className="h-screen w-full bg-cover bg-center bg-black/60 flex justify-center items-center"
-      style={{ backgroundImage: "url('/portfolio/portfolio.png')" }}
+      transition={{ duration: 0.6 }}
+      className="w-full bg-white text-gray-800 py-[150px] px-4 min-h-screen"
     >
-      <motion.div
-        initial={{ y: 20 }}
-        whileInView={{ y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="w-full max-w-6xl px-4 mt-10"
-      >
-        {/* Responsive Scroll Container (mobile/tablet only) */}
-        <div
-          className="block md:hidden snap-y snap-mandatory hide-scrollbar w-full"
-          style={{
-            maxHeight: "70vh",
-            overflowY: "auto",
-            scrollbarWidth: "none", // Firefox
-            msOverflowStyle: "none" // IE/Edge
-          }}
+      <div className="max-w-7xl mx-auto">
+        {/* Section Title */}
+        <motion.h1
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-5xl font-bold text-center mb-12"
         >
-          <div className="flex flex-col items-center justify-center gap-6 w-full px-4">
+          My Previous Professional Projects
+        </motion.h1>
+
+        {/* Responsive Scroll Container (Mobile/Tablet) */}
+        <div className="block md:hidden w-full">
+          <div className="flex flex-col gap-8 items-center">
             {projects.map((project, idx) => (
-              <motion.div key={idx}>
+              <motion.div
+                key={idx}
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+              >
                 <ProjectCard
                   title={project.title}
                   description={project.des}
@@ -102,22 +104,28 @@ const portfolio = () => {
           </div>
         </div>
 
-        {/* Desktop Grid Layout (no scroll, full view) */}
-        <div className="hidden md:flex justify-center items-center gap-2">
+        {/* Desktop Grid Layout */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center w-full max-w-5xl mx-auto">
           {projects.map((project, idx) => (
-            <ProjectCard
+            <motion.div
               key={idx}
-              title={project.title}
-              description={project.des}
-              imgSrc={project.img}
-              techStack={project.iconList}
-              getIcon={getIcon}
-            />
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.4, delay: idx * 0.1 }}
+            >
+              <ProjectCard
+                title={project.title}
+                description={project.des}
+                imgSrc={project.img}
+                techStack={project.iconList}
+                getIcon={getIcon}
+              />
+            </motion.div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   )
 }
 
-export default portfolio
+export default Portfolio

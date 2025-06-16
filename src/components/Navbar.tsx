@@ -23,9 +23,9 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top Bar */}
+      {/* Top Bar with Shadow */}
       {!isOpen && (
-        <div className="menu-bar fixed top-0 left-0 w-full p-6 flex justify-between items-center z-[999] bg-black/45 text-white">
+        <div className="menu-bar fixed top-0 left-0 w-full p-6 flex justify-between items-center z-[999] bg-white text-black shadow">
           <div className="menu-logo">
             <Link href="/" className="text-xl font-bold cursor-pointer">
               About Me
@@ -33,7 +33,7 @@ export default function Navbar() {
           </div>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white cursor-pointer"
+            className="text-black cursor-pointer"
           >
             Menu
           </button>
@@ -53,9 +53,9 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
             />
 
-            {/* Overlay Menu */}
+            {/* Overlay Menu with Shadow */}
             <motion.div
-              className="menu-overlay fixed top-0 left-0 w-full h-screen bg-white p-6 z-40 flex flex-col justify-between overflow-y-auto text-black"
+              className="menu-overlay fixed top-0 left-0 w-full h-screen bg-black p-6 z-40 flex flex-col justify-between overflow-y-auto text-white shadow-2xl"
               initial={{ clipPath: "inset(0% 0% 100% 0%)" }}
               animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
               exit={{ clipPath: "inset(0% 0% 100% 0%)" }}
@@ -66,7 +66,11 @@ export default function Navbar() {
               {isOpen && (
                 <div className="flex justify-between items-start w-full">
                   <div className="menu-logo">
-                    <Link href={"/"} className="text-2xl font-bold">
+                    <Link
+                      onClick={() => setIsOpen(!isOpen)}
+                      href={"/"}
+                      className="text-2xl font-bold"
+                    >
                       Abdul Rauf
                     </Link>
                   </div>
@@ -91,7 +95,7 @@ export default function Navbar() {
                     <motion.div
                       key={idx}
                       className="menu-link-item"
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ color: "#fca311", y: -10 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
                       <motion.div
@@ -137,7 +141,9 @@ export default function Navbar() {
                   </motion.div>
                   <motion.div className="menu-info-col flex flex-col gap-2">
                     <p>abd.rauf.lamada@gmail.com</p>
-                    <p>+62 852-3637-5312</p>
+                    <a href="https://wa.me/6285236375312" target="_blank">
+                      +62 852-3637-5312
+                    </a>
                   </motion.div>
                 </motion.div>
               </motion.div>
@@ -149,9 +155,9 @@ export default function Navbar() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1 }}
               >
-                <button className="underline text-sm sm:text-base">
-                  View Showreel
-                </button>
+                <p className=" text-sm sm:text-base">
+                  Full-stack web developer | AWS | CI/CD
+                </p>
               </motion.div>
             </motion.div>
           </>
