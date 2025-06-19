@@ -26,7 +26,7 @@ export default function ProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="w-[300px] h-[400px] lg:w-[240px] lg:h-[325px] bg-black/60 rounded-2xl flex flex-col justify-between items-center shadow-lg overflow-hidden"
+      className="w-[300px] h-[400px] lg:w-[240px] lg:h-[325px] bg-black/60 rounded-2xl flex flex-col justify-between items-center shadow-lg "
     >
       {/* Card Image */}
       <div className="relative w-full">

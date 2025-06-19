@@ -12,7 +12,8 @@ import {
   SiMongodb,
   SiNestjs
 } from "react-icons/si"
-import IconTooltip from "@/components/IconTooltip" // Your original tooltip
+import IconTooltip from "@/components/IconTooltip"
+import SplashCursor from "@/components/SplashCursor"
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       transition={{ duration: 0.8 }}
       className="bg-white w-screen text-gray-800 flex flex-col justify-center items-center pt-[50px] pb-[100px]"
     >
+      <SplashCursor />
       <div className="lg:max-w-[50%] w-[80%]">
         {/* Hero Section */}
 
