@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
+import LanguageSwitcher from "./LanguageSwitcher"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -17,26 +18,31 @@ export default function Navbar() {
   }, [])
 
   const menuLinks = [
+    { label: "About", path: "/about" },
     { label: "Portfolio", path: "/portfolio" },
     { label: "Contact", path: "/contact" }
   ]
 
   return (
     <>
-      {/* Top Bar with Shadow */}
       {!isOpen && (
         <div className="menu-bar fixed top-0 left-0 w-full p-6 flex justify-between items-center z-[999] bg-white text-black shadow">
           <div className="menu-logo">
             <Link href="/" className="text-xl font-bold cursor-pointer">
-              About Me
+              Home
             </Link>
           </div>
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-black cursor-pointer"
-          >
-            Menu
-          </button>
+
+          <div className="flex gap-4 items-center">
+            <LanguageSwitcher />
+
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-black cursor-pointer"
+            >
+              Menu
+            </button>
+          </div>
         </div>
       )}
 
@@ -71,7 +77,7 @@ export default function Navbar() {
                       href={"/"}
                       className="text-2xl font-bold"
                     >
-                      Abdul Rauf
+                      Home
                     </Link>
                   </div>
                   <button
@@ -156,7 +162,7 @@ export default function Navbar() {
                 transition={{ delay: 1 }}
               >
                 <p className=" text-sm sm:text-base">
-                  Full-stack web developer | AWS | CI/CD
+                  Wordpress | Full-stack web developer | AWS | CI/CD
                 </p>
               </motion.div>
             </motion.div>
