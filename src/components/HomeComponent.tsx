@@ -21,15 +21,15 @@ export default function Home() {
   const portfolioItems = [
     {
       id: 1,
-      title: t("project.ecommerce.title"),
-      description: t("project.ecommerce.desc"),
+      title: t("project.fnb.title"),
+      description: t("project.fnb.desc"),
       image: "/home/hara.png",
       tags: ["WordPress", "Elementor"]
     },
     {
       id: 2,
-      title: t("project.dashboard.title"),
-      description: t("project.dashboard.desc"),
+      title: t("project.ocelle.title"),
+      description: t("project.ocelle.desc"),
       image: "/portfolio/ocelle-2.png",
       tags: ["Next Js", "Tailwind", "Saleor"]
     }
