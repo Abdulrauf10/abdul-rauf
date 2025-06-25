@@ -1,11 +1,43 @@
 "use client"
 
-import { Mail, Phone, Linkedin, MessageSquare, MapPin } from "lucide-react"
+import { Mail, Linkedin, MessageSquare, MapPin } from "lucide-react"
 import { motion } from "framer-motion"
 import { useLanguage } from "@/context/LanguageContext"
+import { useForm } from "react-hook-form"
+import { useState } from "react"
 
 const Contact = () => {
+  const [isSent, setIsSent] = useState(false)
   const { t } = useLanguage()
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting }
+  } = useForm()
+
+  const onSubmit = async (data: any) => {
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+
+      if (res.ok) {
+        setIsSent(true)
+        reset()
+      } else {
+        throw new Error("Failed to send message")
+      }
+    } catch (error) {
+      alert("An error occurred. Please try again.")
+      console.error(error)
+    }
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -149,25 +181,25 @@ const Contact = () => {
                 {t("contact.form.title")}
               </h2>
 
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                 {[
                   {
                     id: "name",
-                    label: t("contact.form.name"),
+                    label: "Name",
                     type: "text",
-                    placeholder: t("contact.form.namePlaceholder")
+                    placeholder: "Your name"
                   },
                   {
                     id: "email",
-                    label: t("contact.form.email"),
+                    label: "Email",
                     type: "email",
-                    placeholder: t("contact.form.emailPlaceholder")
+                    placeholder: "you@example.com"
                   },
                   {
                     id: "subject",
-                    label: t("contact.form.subject"),
+                    label: "Subject",
                     type: "text",
-                    placeholder: t("contact.form.subjectPlaceholder")
+                    placeholder: "What's this about?"
                   }
                 ].map((field, index) => (
                   <motion.div
@@ -186,13 +218,15 @@ const Contact = () => {
                       whileFocus={{ scale: 1.02 }}
                       type={field.type}
                       id={field.id}
-                      name={field.id}
+                      {...register(field.id as "name" | "email" | "subject")}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                       placeholder={field.placeholder}
+                      required
                     />
                   </motion.div>
                 ))}
 
+                {/* Message Field */}
                 <motion.div
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -202,28 +236,34 @@ const Contact = () => {
                     htmlFor="message"
                     className="block text-sm font-medium text-gray-700 mb-2"
                   >
-                    {t("contact.form.message")}
+                    Message
                   </label>
                   <motion.textarea
                     whileFocus={{ scale: 1.02 }}
                     id="message"
-                    name="message"
+                    {...register("message")}
                     rows={6}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                    placeholder={t("contact.form.messagePlaceholder")}
+                    placeholder="Write your message..."
+                    required
                   />
                 </motion.div>
 
+                {isSent && (
+                  <p className="text-green-600">Your message has been sent!</p>
+                )}
+
                 <motion.button
+                  disabled={isSubmitting}
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.5 }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   type="submit"
-                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-semibold disabled:opacity-70"
                 >
-                  {t("contact.form.send")}
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </motion.button>
               </form>
             </motion.div>
