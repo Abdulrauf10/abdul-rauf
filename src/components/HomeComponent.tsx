@@ -9,8 +9,7 @@ import {
   Globe,
   ShoppingCart,
   Palette,
-  CheckCircle,
-  Star
+  CheckCircle
 } from "lucide-react"
 import { useLanguage } from "@/context/LanguageContext"
 import Link from "next/link"
@@ -270,23 +269,6 @@ export default function Home() {
                 </Link>
               </motion.div>
             </motion.div>
-
-            {/* Enhanced Urgency Element */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              whileHover={{ scale: 1.05 }}
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-400 to-orange-400 text-white px-8 py-4 rounded-full text-base font-bold shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <motion.div
-                animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.1, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                <Star className="w-5 h-5" />
-              </motion.div>
-              Limited spots available this month - Book now!
-            </motion.div>
           </div>
         </div>
       </motion.section>
@@ -486,22 +468,13 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
               >
                 <a
-                  href="https://wa.me/6287749122036"
+                  href="https://wa.me/6285236375312"
                   className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-blue-600 transition-colors inline-flex items-center justify-center font-bold text-lg"
                   target="_blank"
                 >
                   📱 WhatsApp Me
                 </a>
               </motion.div>
-            </motion.div>
-
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              transition={{ delay: 0.5 }}
-              className="inline-flex items-center gap-2 bg-yellow-400 text-yellow-900 px-6 py-3 rounded-full font-bold"
-            >
-              🔥 Special Offer: 20% OFF This Month Only!
             </motion.div>
           </motion.div>
         </div>

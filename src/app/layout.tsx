@@ -17,7 +17,10 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Muhammad Abdul Rauf",
-  description: "Rauf's portfolio"
+  description: "Rauf's portfolio",
+  icons: {
+    icon: "/favicon.png"
+  }
 }
 
 export default async function RootLayout({

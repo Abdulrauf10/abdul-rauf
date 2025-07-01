@@ -105,15 +105,15 @@ const Contact = () => {
                   {
                     icon: Linkedin,
                     title: t("contact.linkedin"),
-                    value: "linkedin.com/in/yourprofile",
+                    value: "linkedin.com/in/muhammad-abdul-rauf",
                     href: "https://linkedin.com/in/muhammad-abdul-rauf",
                     color: "blue"
                   },
                   {
                     icon: MessageSquare,
                     title: t("contact.whatsapp"),
-                    value: "+62 87749122036",
-                    href: "https://wa.me/6287749122036",
+                    value: "+62 85236375312",
+                    href: "https://wa.me/6285236375312",
                     color: "green"
                   },
                   {
