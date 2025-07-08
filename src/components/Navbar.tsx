@@ -17,7 +17,7 @@ export default function Navbar() {
   }, [])
 
   const menuLinks = [
-    { label: "About", path: "/about" },
+    { label: "Home", path: "/" },
     { label: "Portfolio", path: "/portfolio" },
     { label: "Contact", path: "/contact" }
   ]
