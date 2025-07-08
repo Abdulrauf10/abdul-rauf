@@ -2,13 +2,11 @@
 
 import { Mail, Linkedin, MessageSquare, MapPin } from "lucide-react"
 import { motion } from "framer-motion"
-import { useLanguage } from "@/context/LanguageContext"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 
 const Contact = () => {
   const [isSent, setIsSent] = useState(false)
-  const { t } = useLanguage()
 
   const {
     register,
@@ -74,7 +72,7 @@ const Contact = () => {
               transition={{ duration: 0.5 }}
               className="text-4xl font-bold text-gray-900 mb-4"
             >
-              {t("contact.title")}
+              Let&apos;s Work Together
             </motion.h1>
             <motion.p
               initial={{ y: 30, opacity: 0 }}
@@ -82,7 +80,8 @@ const Contact = () => {
               transition={{ delay: 0.3 }}
               className="text-xl text-gray-600 max-w-3xl mx-auto"
             >
-              {t("contact.subtitle")}
+              Ready to transform your business? Get in touch for a free
+              consultation and quote.
             </motion.p>
           </motion.div>
 
@@ -90,36 +89,36 @@ const Contact = () => {
             {/* Contact Information */}
             <motion.div variants={itemVariants}>
               <h2 className="text-2xl font-bold text-gray-900 mb-8">
-                {t("contact.info")}
+                Get In Touch
               </h2>
 
               <div className="space-y-6">
                 {[
                   {
                     icon: Mail,
-                    title: t("contact.email"),
+                    title: "Email",
                     value: "abd.rauf.lamada@gmail.com",
                     href: "mailto:abd.rauf.lamada@gmail.com",
                     color: "blue"
                   },
                   {
                     icon: Linkedin,
-                    title: t("contact.linkedin"),
+                    title: "Linkedin",
                     value: "linkedin.com/in/muhammad-abdul-rauf",
                     href: "https://linkedin.com/in/muhammad-abdul-rauf",
                     color: "blue"
                   },
                   {
                     icon: MessageSquare,
-                    title: t("contact.whatsapp"),
+                    title: "Whatsapp",
                     value: "+62 85236375312",
                     href: "https://wa.me/6285236375312",
                     color: "green"
                   },
                   {
                     icon: MapPin,
-                    title: t("contact.location"),
-                    value: t("contact.locationText"),
+                    title: "Location",
+                    value: "Available worldwide (Remote)",
                     href: null,
                     color: "gray"
                   }
@@ -178,7 +177,7 @@ const Contact = () => {
             {/* Contact Form */}
             <motion.div variants={itemVariants}>
               <h2 className="text-2xl font-bold text-gray-900 mb-8">
-                {t("contact.form.title")}
+                Send Message
               </h2>
 
               <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
@@ -268,40 +267,6 @@ const Contact = () => {
               </form>
             </motion.div>
           </div>
-
-          {/* Call to Action */}
-          <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            viewport={{ once: true }}
-            className="mt-16 text-center bg-gray-50 rounded-2xl p-8"
-          >
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              {t("contact.cta.title")}
-            </h2>
-            <p className="text-gray-600 mb-6">{t("contact.cta.subtitle")}</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="mailto:abd.rauf.lamada@gmail.com"
-                className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center justify-center gap-2"
-              >
-                <Mail size={20} />
-                {t("contact.cta.email")}
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="https://wa.me/6287749122036"
-                className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors inline-flex items-center justify-center gap-2"
-              >
-                <MessageSquare size={20} />
-                {t("contact.cta.whatsapp")}
-              </motion.a>
-            </div>
-          </motion.div>
         </div>
       </motion.section>
     </div>

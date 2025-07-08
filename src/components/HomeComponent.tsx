@@ -1,96 +1,22 @@
-"use client"
-
 import { motion } from "framer-motion"
-import React from "react"
-import {
-  ArrowRight,
-  Code,
-  Zap,
-  Globe,
-  ShoppingCart,
-  Palette,
-  CheckCircle
-} from "lucide-react"
-import { useLanguage } from "@/context/LanguageContext"
-import Link from "next/link"
+import { Code, Database, Server, Cloud, User, Mail } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card } from "./ui/Card"
+import Image from "next/image"
+import { useRouter } from "next/navigation"
 
-export default function Home() {
-  const { t } = useLanguage()
-
-  const portfolioItems = [
-    {
-      id: 1,
-      title: t("project.fnb.title"),
-      description: t("project.fnb.desc"),
-      image: "/home/hara.png",
-      tags: ["WordPress", "Elementor"]
-    },
-    {
-      id: 2,
-      title: t("project.ocelle.title"),
-      description: t("project.ocelle.desc"),
-      image: "/portfolio/ocelle-2.png",
-      tags: ["Next Js", "Tailwind", "Saleor"]
-    }
-  ]
-
-  const services = [
-    {
-      icon: <Globe className="w-8 h-8 text-blue-600" />,
-      title: "WordPress Development",
-      description: t("home.services.wordpress")
-    },
-    {
-      icon: <ShoppingCart className="w-8 h-8 text-blue-600" />,
-      title: "WooCommerce Setup",
-      description: t("home.services.woocommerce")
-    },
-    {
-      icon: <Palette className="w-8 h-8 text-blue-600" />,
-      title: "Landing Pages",
-      description: t("home.services.landing")
-    },
-    {
-      icon: <Code className="w-8 h-8 text-blue-600" />,
-      title: "Full-Stack Development",
-      description: t("home.services.fullstack")
-    },
-    {
-      icon: <Zap className="w-8 h-8 text-blue-600" />,
-      title: "Optimization",
-      description: t("home.services.optimization")
-    }
-  ]
-
+const HomeComponent = () => {
+  const route = useRouter()
   const technologies = [
-    "WordPress",
-    "WooCommerce",
-    "Elementor",
-    "React.js",
-    "Next.js",
-    "Node.js",
-    "Express.js",
-    "Nest.js",
-    "PostgreSQL"
-  ]
-
-  const benefits = [
-    {
-      icon: <CheckCircle className="w-6 h-6 text-green-500" />,
-      text: t("home.hero.response")
-    },
-    {
-      icon: <CheckCircle className="w-6 h-6 text-green-500" />,
-      text: t("home.hero.experience")
-    },
-    {
-      icon: <CheckCircle className="w-6 h-6 text-green-500" />,
-      text: t("home.hero.satisfaction")
-    },
-    {
-      icon: <CheckCircle className="w-6 h-6 text-green-500" />,
-      text: t("home.hero.consultation")
-    }
+    { name: "React", icon: Code, color: "text-blue-500" },
+    { name: "Next.js", icon: Code, color: "text-gray-800" },
+    { name: "Node.js", icon: Server, color: "text-green-500" },
+    { name: "Nest.js", icon: Server, color: "text-red-500" },
+    { name: "Express", icon: Server, color: "text-gray-600" },
+    { name: "PostgreSQL", icon: Database, color: "text-blue-600" },
+    { name: "MongoDB", icon: Database, color: "text-green-600" },
+    { name: "CI/CD", icon: Code, color: "text-orange-500" },
+    { name: "AWS", icon: Cloud, color: "text-yellow-600" }
   ]
 
   const containerVariants = {
@@ -108,377 +34,331 @@ export default function Home() {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
-      opacity: 1
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  }
+
+  const techVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.4,
+        type: "spring",
+        stiffness: 260,
+        damping: 20
+      }
     }
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white text-gray-900 overflow-hidden">
       {/* Hero Section */}
       <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="relative pt-32 pb-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 overflow-hidden"
-      >
-        {/* Animated Background Sparkles */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              animate="animate"
-              className="absolute text-blue-400/30"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`
-              }}
-            ></motion.div>
-          ))}
-        </div>
-
-        {/* Floating geometric shapes */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            animate={{
-              y: [0, -30, 0],
-              rotate: [0, 180, 360]
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="absolute top-20 left-10 w-4 h-4 bg-blue-400/20 rounded-full"
-          />
-          <motion.div
-            animate={{
-              y: [0, 40, 0],
-              rotate: [0, -180, -360]
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="absolute top-40 right-20 w-6 h-6 bg-purple-400/20 rounded-full"
-          />
-          <motion.div
-            animate={{
-              y: [0, -20, 0],
-              x: [0, 20, 0]
-            }}
-            transition={{
-              duration: 12,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="absolute bottom-40 left-1/4 w-3 h-3 bg-indigo-400/20 rotate-45"
-          />
-        </div>
-
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <motion.h1
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-5xl sm:text-7xl font-bold text-gray-900 mb-8 leading-tight"
-            >
-              {t("home.hero.title")}
-              <motion.span
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-                className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mt-2"
-              >
-                {t("home.hero.subtitle")}
-              </motion.span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
-            >
-              {t("home.hero.description")}
-            </motion.p>
-
-            {/* Enhanced Benefits List */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 max-w-5xl mx-auto"
-            >
-              {benefits.map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{
-                    delay: 0.6 + index * 0.1,
-                    type: "spring",
-                    stiffness: 150
-                  }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="flex flex-col items-center gap-3 p-4 bg-white/70 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-white/50"
-                >
-                  <div className="p-2 bg-green-100 rounded-full">
-                    {benefit.icon}
-                  </div>
-                  <span className="text-sm font-medium text-gray-700 text-center leading-tight">
-                    {benefit.text}
-                  </span>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Enhanced CTA Buttons */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8"
-            >
-              <motion.div
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative"
-              >
-                <Link
-                  href="/contact"
-                  className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-5 rounded-2xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 inline-flex items-center justify-center text-lg font-bold shadow-xl hover:shadow-2xl"
-                >
-                  <span className="mr-3 text-2xl">🚀</span>
-                  {t("home.hero.startProject")}
-                  <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href="/portfolio"
-                  className="group bg-white/80 backdrop-blur-sm text-blue-600 border-2 border-blue-200 px-10 py-5 rounded-2xl hover:bg-blue-50 hover:border-blue-300 transition-all duration-300 text-lg font-bold shadow-lg hover:shadow-xl"
-                >
-                  {t("home.hero.viewPortfolio")}
-                </Link>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Technologies */}
-      <motion.section
+        className="min-h-screen flex items-center justify-center px-4 relative"
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
+        animate="visible"
         variants={containerVariants}
-        className="py-16 bg-white"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div variants={itemVariants} className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {t("home.technologies.title")}
-            </h2>
-            <p className="text-gray-600">{t("home.technologies.subtitle")}</p>
-          </motion.div>
-          <motion.div
-            variants={containerVariants}
-            className="flex flex-wrap justify-center gap-4"
-          >
-            {technologies.map((tech, index) => (
-              <motion.span
-                key={index}
-                variants={itemVariants}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className="bg-gray-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-100 hover:text-blue-800 transition-colors cursor-pointer"
-              >
-                {tech}
-              </motion.span>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
+        {/* Animated background elements */}
+        <motion.div
+          className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full mix-blend-multiply filter blur-xl"
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -100, 0]
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-multiply filter blur-xl"
+          animate={{
+            x: [0, -100, 0],
+            y: [0, 100, 0]
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
 
-      {/* Enhanced Services Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-        className="py-16 bg-gray-50"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div variants={itemVariants} className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {t("home.services.title")}
-            </h2>
-            <p className="text-gray-600 mb-6">{t("home.services.subtitle")}</p>
+        <div className="text-center z-10 max-w-4xl mx-auto">
+          {/* Profile Photo */}
+          <motion.div variants={itemVariants} className="mb-8">
             <motion.div
+              className="w-48 h-48 mx-auto mb-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 p-1 shadow-2xl"
               whileHover={{ scale: 1.05 }}
-              className="inline-block bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-semibold"
+              transition={{ type: "spring", stiffness: 300 }}
             >
-              ⚡ Ready to start in 24 hours
+              <div className="w-full h-full rounded-full bg-gray-200 flex items-center justify-center text-gray-500">
+                <Image
+                  src={"/home/rauf.png"}
+                  width={500}
+                  height={500}
+                  alt="Muhammad Abdul Rauf"
+                  className=" rounded-full"
+                />
+                <span className="sr-only">Rauf&apos;s Photo</span>
+              </div>
             </motion.div>
           </motion.div>
-          <motion.div
-            variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer group"
-              >
-                <motion.div
-                  whileHover={{ rotate: 15, scale: 1.1 }}
-                  className="mb-4"
-                >
-                  {service.icon}
-                </motion.div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
-                <motion.a
-                  href="/contact"
-                  whileHover={{ scale: 1.05 }}
-                  className="text-blue-600 font-semibold text-sm hover:text-blue-700 transition-colors group-hover:translate-x-2 transition-transform"
-                >
-                  Get Quote Now →
-                </motion.a>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
 
-      {/* Portfolio Preview */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-        className="py-16 bg-white"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div variants={itemVariants} className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {t("home.portfolio.title")}
-            </h2>
-            <p className="text-gray-600">{t("home.portfolio.subtitle")}</p>
+          <motion.div variants={itemVariants} className="mb-8">
+            <motion.h1
+              className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              Hi, I&apos;m Rauf
+            </motion.h1>
           </motion.div>
-          <motion.div
-            variants={containerVariants}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12"
-          >
-            {portfolioItems.map((item) => (
-              <motion.div
-                key={item.id}
-                variants={itemVariants}
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-              >
-                <div className="aspect-video overflow-hidden">
-                  <motion.img
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-gray-200 mb-3 line-clamp-2">
-                    {item.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {item.tags.map((tag, tagIndex) => (
-                      <motion.span
-                        key={tagIndex}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: tagIndex * 0.1 }}
-                        className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm"
-                      >
-                        {tag}
-                      </motion.span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-          <motion.div variants={itemVariants} className="text-center">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                href="/portfolio"
-                className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center"
-              >
-                {t("home.portfolio.seeMore")}
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
 
-      {/* New Strong CTA Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-        className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700 text-white"
-      >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div variants={itemVariants}>
-            <h2 className="text-4xl font-bold mb-6">
-              Ready to Transform Your Business Online?
-            </h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Don&apos;t let your competitors get ahead. Get a professional,
-              high-converting website that brings results in just 24-48 hours.
-            </p>
+            <motion.p
+              className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            >
+              A passionate{" "}
+              <span className="text-blue-600 font-semibold">
+                Full-Stack Web Developer
+              </span>{" "}
+              who crafts
+              <br />
+              beautiful, scalable, and user-friendly digital experiences
+            </motion.p>
+          </motion.div>
 
-            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+          >
+            <motion.div
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-blue-500/25 transition-all duration-300"
+                onClick={() => route.push("/portfolio")}
               >
-                <Link
-                  href="/contact"
-                  className="bg-white text-blue-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors inline-flex items-center justify-center font-bold text-lg shadow-xl"
-                >
-                  💬 Get FREE Quote Now
-                </Link>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                <User className="mr-2 h-5 w-5" />
+                View Portfolio
+              </Button>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-purple-500/25 transition-all duration-300"
+                onClick={() => route.push("/contact")}
               >
-                <a
-                  href="https://wa.me/6285236375312"
-                  className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-blue-600 transition-colors inline-flex items-center justify-center font-bold text-lg"
-                  target="_blank"
-                >
-                  📱 WhatsApp Me
-                </a>
-              </motion.div>
+                <Mail className="mr-2 h-5 w-5" />
+                Contact Me
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="animate-bounce">
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="text-gray-500"
+            >
+              ↓ Scroll to explore ↓
             </motion.div>
           </motion.div>
         </div>
       </motion.section>
+
+      {/* About Section */}
+      <motion.section
+        className="py-20 px-4 bg-gray-50"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2
+            className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            About Me
+          </motion.h2>
+
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <Card className="p-8 bg-white border-gray-200 shadow-xl">
+              <p className="text-lg text-gray-600 leading-relaxed">
+                I&apos;m a dedicated full-stack developer with a passion for
+                creating innovative web solutions. With expertise in modern
+                technologies and a keen eye for design, I transform ideas into
+                powerful, scalable applications. I love tackling complex
+                problems and delivering exceptional user experiences that make a
+                difference.
+              </p>
+            </Card>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Technologies Section */}
+      <motion.section
+        className="py-20 px-4 bg-white"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="max-w-6xl mx-auto">
+          <motion.h2
+            className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Technologies I Use
+          </motion.h2>
+
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {technologies.map((tech) => (
+              <motion.div
+                key={tech.name}
+                variants={techVariants}
+                whileHover={{
+                  scale: 1.1,
+                  rotate: 5,
+                  transition: { type: "spring", stiffness: 300 }
+                }}
+                className="group"
+              >
+                <Card className="p-6 bg-white border-gray-200 text-center hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl">
+                  <tech.icon
+                    className={`h-12 w-12 mx-auto mb-3 ${tech.color} group-hover:scale-110 transition-transform duration-300`}
+                  />
+                  <p className="font-semibold text-gray-800 group-hover:text-gray-900 transition-colors duration-300">
+                    {tech.name}
+                  </p>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Call to Action Section */}
+      <motion.section
+        className="py-20 px-4 bg-gradient-to-br from-blue-50 to-purple-50"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2
+            className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent"
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Ready to Build Something Amazing?
+          </motion.h2>
+
+          <motion.p
+            className="text-xl text-gray-600 mb-12"
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Let&apos;s collaborate and bring your vision to life with
+            cutting-edge technology and creative solutions.
+          </motion.p>
+
+          <motion.div
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-10 py-5 text-xl font-semibold shadow-xl hover:shadow-purple-500/25 transition-all duration-300"
+                onClick={() => route.push("/portfolio")}
+              >
+                <User className="mr-3 h-6 w-6" />
+                Explore My Work
+              </Button>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white px-10 py-5 text-xl font-semibold shadow-xl hover:shadow-pink-500/25 transition-all duration-300"
+                onClick={() => route.push("/contact")}
+              >
+                <Mail className="mr-3 h-6 w-6" />
+                Get In Touch
+              </Button>
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Footer */}
+      <motion.footer
+        className="py-12 text-center text-gray-600 border-t border-gray-200 bg-white"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <p className="text-lg">© 2024 Rauf - Full-Stack Web Developer</p>
+      </motion.footer>
     </div>
   )
 }
+
+export default HomeComponent

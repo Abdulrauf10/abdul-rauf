@@ -2,37 +2,35 @@
 
 // import { ExternalLink, Github } from "lucide-react"
 import { motion } from "framer-motion"
-import { useLanguage } from "@/context/LanguageContext"
 
 const Portfolio = () => {
-  const { t } = useLanguage()
-
   const portfolioItems = [
     {
       id: 1,
-      title: t("project.fnb.title"),
-      description: t("project.fnb.desc"),
+      title: "F&B - Hara Chicken",
+      description:
+        "Company profile website for a food & beverage brand built with WordPress.",
       image: "/home/hara.png",
-      tags: ["WordPress", "WooCommerce", "Elementor", "PHP"]
+      tags: ["WordPress", "Elementor"]
     },
     {
       id: 2,
-      title: t("project.ocelle.title"),
-      description: t("project.ocelle.desc"),
+      title: "Ocelle",
+      description: "A web app to plan personalized diets for dogs",
       image: "/portfolio/ocelle-2.png",
       tags: ["Next Js", "Tailwind", "Saleor", "Express"]
     },
     {
       id: 3,
-      title: t("project.surge.title"),
-      description: t("project.surge.desc"),
+      title: "Surge",
+      description: "AI-powered curriculum generator for schools",
       image: "/portfolio/surge-2.png",
       tags: ["Vue Js", "Vuetify", "Vuex"]
     },
     {
       id: 4,
-      title: t("project.homage.title"),
-      description: t("project.homage.desc"),
+      title: "Homage",
+      description: "Hospital management system for admin and patients",
       image: "/portfolio/homage-2.png",
       tags: ["Next Js", "Zustand", "Chakra UI"],
       liveUrl: "#",
@@ -40,15 +38,15 @@ const Portfolio = () => {
     },
     {
       id: 5,
-      title: t("project.teamtrics.title"),
-      description: t("project.teamtrics.desc"),
+      title: "Teamtrics",
+      description: "Time tracking app for remote workers",
       image: "/portfolio/teamtrics-2.png",
       tags: ["Next Js", "Zustand", "Chakra UI"]
     },
     {
       id: 6,
-      title: t("project.rice.title"),
-      description: t("project.rice.desc"),
+      title: "True rice",
+      description: "AI-based tool to identify rice quality",
       image: "/portfolio/truerice-2.png",
       tags: ["Nuxt Js", "Vuetify", "Vuex"]
     }
@@ -89,16 +87,8 @@ const Portfolio = () => {
               transition={{ duration: 0.5 }}
               className="text-4xl font-bold text-gray-900 mb-4"
             >
-              {t("portfolio.title")}
+              Recent Success Stories
             </motion.h1>
-            <motion.p
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="text-xl text-gray-600 max-w-3xl mx-auto"
-            >
-              {t("portfolio.subtitle")}
-            </motion.p>
           </motion.div>
 
           <motion.div

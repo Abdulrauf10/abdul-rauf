@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import LanguageSwitcher from "./LanguageSwitcher"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -34,8 +33,6 @@ export default function Navbar() {
           </div>
 
           <div className="flex gap-4 items-center">
-            <LanguageSwitcher />
-
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-black cursor-pointer"
