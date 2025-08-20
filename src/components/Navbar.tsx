@@ -28,11 +28,11 @@ export default function Navbar() {
         <div className="menu-bar fixed top-0 left-0 w-full p-6 flex justify-between items-center z-[999] bg-white text-black shadow">
           <div className="menu-logo">
             <Link
-              href="/shop"
+              href="/"
               className="text-xl font-bold cursor-pointer"
               target="_blank"
             >
-              Shop
+              Home
             </Link>
           </div>
 
