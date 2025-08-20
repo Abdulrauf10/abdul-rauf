@@ -2,7 +2,7 @@
 
 import { Product } from "@/types"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter } from "@/components/ui/CardPortfolio"
+import { Card, CardContent, CardFooter } from "@/components/ui/PortfolioCard"
 import { useCart } from "@/contexts/CartContext"
 import { useToast } from "@/hooks/use-toast"
 import { formatCurrency } from "@/utils/currency"

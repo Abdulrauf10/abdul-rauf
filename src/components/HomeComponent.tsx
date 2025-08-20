@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import { Code, Database, Server, Cloud, User, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card } from "./ui/CardPortfolio"
+import { Card } from "./ui/PortfolioCard"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import Navbar from "./Navbar"
