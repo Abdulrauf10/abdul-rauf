@@ -1,7 +1,6 @@
 import { motion } from "framer-motion"
 import { Code, Database, Server, Cloud, User, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card } from "./ui/PortfolioCard"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import Navbar from "./Navbar"
@@ -214,7 +213,7 @@ const HomeComponent = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <Card className="p-8 bg-white border-gray-200 shadow-xl">
+              <div className="p-8 bg-white border-gray-200 shadow-xl">
                 <p className="text-lg text-gray-600 leading-relaxed">
                   I&apos;m a dedicated full-stack developer with a passion for
                   creating innovative web solutions. With expertise in modern
@@ -223,7 +222,7 @@ const HomeComponent = () => {
                   problems and delivering exceptional user experiences that make
                   a difference.
                 </p>
-              </Card>
+              </div>
             </motion.div>
           </div>
         </motion.section>
@@ -265,14 +264,14 @@ const HomeComponent = () => {
                   }}
                   className="group"
                 >
-                  <Card className="p-6 bg-white border-gray-200 text-center hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl">
+                  <div className="p-6 bg-white border-gray-200 text-center hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl">
                     <tech.icon
                       className={`h-12 w-12 mx-auto mb-3 ${tech.color} group-hover:scale-110 transition-transform duration-300`}
                     />
                     <p className="font-semibold text-gray-800 group-hover:text-gray-900 transition-colors duration-300">
                       {tech.name}
                     </p>
-                  </Card>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
