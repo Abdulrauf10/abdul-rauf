@@ -26,14 +26,14 @@ const Portfolio = () => {
       title: "Surge",
       description: "AI-powered curriculum generator for schools",
       image: "/portfolio/surge-2.png",
-      tags: ["Vue Js", "Vuetify", "Vuex"]
+      tags: ["Next Js", "Tailwind", "Zustand"]
     },
     {
       id: 4,
       title: "Homage",
       description: "Hospital management system for admin and patients",
       image: "/portfolio/homage-2.png",
-      tags: ["Next Js", "Zustand", "Chakra UI"],
+      tags: ["Next Js", "Zustand", "Chakra UI", "Jitsi Meet", "Apex Chart"],
       liveUrl: "#",
       githubUrl: "#"
     },
@@ -42,14 +42,14 @@ const Portfolio = () => {
       title: "Teamtrics",
       description: "Time tracking app for remote workers",
       image: "/portfolio/teamtrics-2.png",
-      tags: ["Next Js", "Zustand", "Chakra UI"]
+      tags: ["Next Js", "Zustand", "Chakra UI", "OpenAi API"]
     },
     {
       id: 6,
       title: "True rice",
       description: "AI-based tool to identify rice quality",
       image: "/portfolio/truerice-2.png",
-      tags: ["Nuxt Js", "Vuetify", "Vuex"]
+      tags: ["Next Js", "Tailwind", "Zustand"]
     }
   ]
 
