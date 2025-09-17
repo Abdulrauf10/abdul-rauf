@@ -55,6 +55,73 @@ const HomeComponent = () => {
     }
   }
 
+  const portfolioItems = [
+    {
+      id: 1,
+      title: "Company: HaraChicken - Company Profile",
+      description:
+        "Company profile website for a food & beverage brand built with WordPress.",
+      image: "/home/hara.png",
+      tags: ["WordPress", "Elementor"]
+    },
+    {
+      id: 2,
+      title: "Company: Atech Solution - Ocelle",
+      description: "A web app to plan personalized diets for dogs",
+      image: "/portfolio/ocelle-2.png",
+      tags: ["Next Js", "Tailwind", "Saleor", "Zustand"]
+    },
+    {
+      id: 3,
+      title: "Company: SL2 - Surge",
+      description: "AI-powered curriculum generator for schools",
+      image: "/portfolio/surge-2.png",
+      tags: ["Vue Js", "Vuetify", "Vuex"]
+    },
+    {
+      id: 4,
+      title: "Company: Atech Solution - Homage",
+      description: "Hospital management system for admin and patients",
+      image: "/portfolio/homage-2.png",
+      tags: ["Next Js", "Zustand", "Chakra UI", "Jitsi Meet", "Apex Chart"],
+      liveUrl: "#",
+      githubUrl: "#"
+    },
+    {
+      id: 5,
+      title: "Company: Atech Solution - Teamtrics",
+      description: "Time tracking app for remote workers",
+      image: "/portfolio/teamtrics-2.png",
+      tags: ["Next Js", "Zustand", "Chakra UI", "OpenAi API"]
+    },
+    {
+      id: 6,
+      title: "Company: SL2 - True rice",
+      description: "AI-based tool to identify rice quality",
+      image: "/portfolio/truerice-2.png",
+      tags: ["Nuxt Js", "Tailwind", "Vuex"]
+    }
+  ]
+
+  const containerVariants2 = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.1
+      }
+    }
+  }
+
+  const itemVariants2 = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -188,7 +255,7 @@ const HomeComponent = () => {
           </div>
         </motion.section>
 
-        {/* About Section */}
+        {/* curent projects section */}
         <motion.section
           className="py-20 px-4 bg-gray-50"
           initial={{ opacity: 0 }}
@@ -196,33 +263,98 @@ const HomeComponent = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto">
             <motion.h2
-              className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
+              className="text-4xl md:text-5xl text-center font-bold mb-12 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
               initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              About Me
+              Recent Projects
             </motion.h2>
 
             <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
+              variants={containerVariants2}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
-              <div className="p-8 bg-white border-gray-200 shadow-xl">
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  I&apos;m a dedicated full-stack developer with a passion for
-                  creating innovative web solutions. With expertise in modern
-                  technologies and a keen eye for design, I transform ideas into
-                  powerful, scalable applications. I love tackling complex
-                  problems and delivering exceptional user experiences that make
-                  a difference.
-                </p>
-              </div>
+              {portfolioItems.map((item) => (
+                <motion.div
+                  key={item.id}
+                  variants={itemVariants2}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="group relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300"
+                >
+                  <div className="aspect-video overflow-hidden">
+                    <motion.img
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.3 }}
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                      <p className="text-gray-200 text-sm mb-4 line-clamp-3">
+                        {item.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {item.tags.map((tag, tagIndex) => (
+                          <span
+                            key={tagIndex}
+                            className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full text-xs"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* <div className="flex gap-3">
+                      <motion.a
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        href={item.liveUrl}
+                        className="flex items-center gap-1 bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded-lg text-sm transition-colors"
+                      >
+                        <ExternalLink size={14} />
+                        {t("portfolio.liveDemo")}
+                      </motion.a>
+                      <motion.a
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        href={item.githubUrl}
+                        className="flex items-center gap-1 bg-gray-800 hover:bg-gray-900 px-3 py-2 rounded-lg text-sm transition-colors"
+                      >
+                        <Github size={14} />
+                        {t("portfolio.code")}
+                      </motion.a>
+                    </div> */}
+                    </div>
+                  </div>
+
+                  {/* Default Card Content */}
+                  <div className="p-6 group-hover:opacity-0 transition-opacity duration-300">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      {item.title}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {item.tags.slice(0, 3).map((tag, tagIndex) => (
+                        <span
+                          key={tagIndex}
+                          className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
           </div>
         </motion.section>
@@ -348,17 +480,6 @@ const HomeComponent = () => {
             </motion.div>
           </div>
         </motion.section>
-
-        {/* Footer */}
-        <motion.footer
-          className="py-12 text-center text-gray-600 border-t border-gray-200 bg-white"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-lg">© 2024 Rauf - Full-Stack Web Developer</p>
-        </motion.footer>
       </div>
     </>
   )

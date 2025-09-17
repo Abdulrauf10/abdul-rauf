@@ -78,15 +78,6 @@ const Contact = () => {
               >
                 Let&apos;s Work Together
               </motion.h1>
-              <motion.p
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto"
-              >
-                Ready to transform your business? Get in touch for a free
-                consultation and quote.
-              </motion.p>
             </motion.div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
