@@ -1,55 +1,64 @@
 "use client"
 
 import Navbar from "@/components/Navbar"
-// import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github } from "lucide-react"
 import { motion } from "framer-motion"
 
 const Portfolio = () => {
   const portfolioItems = [
     {
       id: 1,
-      title: "F&B - Hara Chicken",
+      title: "Frontend - Object Detection",
       description:
-        "Company profile website for a food & beverage brand built with WordPress.",
-      image: "/home/hara.png",
-      tags: ["WordPress", "Elementor"]
+        "A lightweight, browser-based object detection app using your webcam and the power of TensorFlow.js.",
+      image: "/portfolio/tensorflow.png",
+      tags: ["Next Js", "Tensorflow"],
+      liveUrl: "https://object-detection-flame.vercel.app/",
+      githubUrl: "https://github.com/Abdulrauf10/object-detection"
     },
     {
       id: 2,
-      title: "Ocelle",
-      description: "A web app to plan personalized diets for dogs",
-      image: "/portfolio/ocelle-2.png",
-      tags: ["Next Js", "Tailwind", "Saleor", "Express"]
+      title: "Frontend - Workwave",
+      description:
+        "A streamlined job portal that connects seekers to original postings with one click",
+      image: "/portfolio/workwave.png",
+      tags: ["Next Js", "Chakra UI", "RapidAPI"],
+      liveUrl: "https://workwave-pi.vercel.app/",
+      githubUrl: "https://github.com/Abdulrauf10/workwave"
     },
     {
       id: 3,
-      title: "Surge",
-      description: "AI-powered curriculum generator for schools",
-      image: "/portfolio/surge-2.png",
-      tags: ["Next Js", "Tailwind", "Zustand"]
+      title: "Frontend PWA - Football leagues",
+      description:
+        "A Progressive Web App to explore football leagues with real-time details and updates.",
+      image: "/portfolio/football.png",
+      tags: ["Next Js", "Tailwind", "ShadCn", "next-pwa"],
+      liveUrl: "https://football-league-pwa.vercel.app/",
+      githubUrl: "https://github.com/Abdulrauf10/football-league-PWA"
     },
     {
       id: 4,
-      title: "Homage",
+      title: "Backend - Trivanest",
       description: "Hospital management system for admin and patients",
-      image: "/portfolio/homage-2.png",
-      tags: ["Next Js", "Zustand", "Chakra UI", "Jitsi Meet", "Apex Chart"],
-      liveUrl: "#",
-      githubUrl: "#"
+      image: "/portfolio/trivanest.png",
+      tags: ["Node Js", "Nest Js", "Email SMTP", "PostgreSQL"],
+      liveUrl: "https://github.com/Abdulrauf10/trivanest-be",
+      githubUrl: "https://github.com/Abdulrauf10/trivanest-be"
     },
     {
       id: 5,
-      title: "Teamtrics",
-      description: "Time tracking app for remote workers",
-      image: "/portfolio/teamtrics-2.png",
-      tags: ["Next Js", "Zustand", "Chakra UI", "OpenAi API"]
-    },
-    {
-      id: 6,
-      title: "True rice",
-      description: "AI-based tool to identify rice quality",
-      image: "/portfolio/truerice-2.png",
-      tags: ["Next Js", "Tailwind", "Zustand"]
+      title: "Backend - Talimantik",
+      description:
+        "Backend system for managing time-based learning subscriptions.",
+      image: "/portfolio/talimantik.png",
+      tags: [
+        "Node Js",
+        "Express Js",
+        "Payment Gateaway Midtrans",
+        "PostgreSQL"
+      ],
+      liveUrl: "https://github.com/Abdulrauf10/talimantik-be",
+      githubUrl: "https://github.com/Abdulrauf10/talimantik-be"
     }
   ]
 
@@ -91,7 +100,7 @@ const Portfolio = () => {
                 transition={{ duration: 0.5 }}
                 className="text-4xl font-bold text-gray-900 mb-4"
               >
-                Recent Success Stories
+                Fun Projects
               </motion.h1>
             </motion.div>
 
@@ -117,8 +126,8 @@ const Portfolio = () => {
                   </div>
 
                   {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 z-10 pointer-events-auto">
                       <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                       <p className="text-gray-200 text-sm mb-4 line-clamp-3">
                         {item.description}
@@ -135,26 +144,28 @@ const Portfolio = () => {
                         ))}
                       </div>
 
-                      {/* <div className="flex gap-3">
-                      <motion.a
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        href={item.liveUrl}
-                        className="flex items-center gap-1 bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded-lg text-sm transition-colors"
-                      >
-                        <ExternalLink size={14} />
-                        {t("portfolio.liveDemo")}
-                      </motion.a>
-                      <motion.a
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        href={item.githubUrl}
-                        className="flex items-center gap-1 bg-gray-800 hover:bg-gray-900 px-3 py-2 rounded-lg text-sm transition-colors"
-                      >
-                        <Github size={14} />
-                        {t("portfolio.code")}
-                      </motion.a>
-                    </div> */}
+                      <div className="flex gap-3">
+                        <motion.a
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          href={item.liveUrl}
+                          target="_blank"
+                          className="flex items-center gap-1 bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded-lg text-sm transition-colors"
+                        >
+                          <ExternalLink size={14} />
+                          Live demo
+                        </motion.a>
+                        <motion.a
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          href={item.githubUrl}
+                          target="_blank"
+                          className="flex items-center gap-1 bg-gray-800 hover:bg-gray-900 px-3 py-2 rounded-lg text-sm transition-colors"
+                        >
+                          <Github size={14} />
+                          Source code
+                        </motion.a>
+                      </div>
                     </div>
                   </div>
 
